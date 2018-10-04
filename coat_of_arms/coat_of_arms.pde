@@ -1,12 +1,14 @@
 int Wakka_Wakka = 0;
-int DIRECTION = 2;
+int DIRECTION = 15;
 int pacManRot = 0;
-int clydeDIRECTION = 2;
-int clydeFloating = 0;
+
+int MOUTH_STATE  = 1; //1, 2, 3, 4
+int MOUTH_COUNT = 0;
 
 void setup() {
   size(1000, 1000);
   background(0);
+  frameRate(10);
 
 }
 
@@ -14,22 +16,81 @@ void draw() {
   smooth();
   
   Wakka_Wakka = Wakka_Wakka + DIRECTION;
-  clydeFloating = clydeFloating + clydeDIRECTION;
   
-  pacMan(width/2,height /2,Wakka_Wakka);
-  clydeGhost(width/2,height /2, clydeFloating );
+  clydeGhost(width/2,height /2, Wakka_Wakka );
   logoPacMan(width/2,height /2);
   
+  MOUTH_COUNT++;
+  if(MOUTH_COUNT > 10){
+      MOUTH_STATE++;
+  } else if (MOUTH_COUNT > 20){
+    MOUTH_STATE++;
+  } else if (MOUTH_COUNT > 30){
+    MOUTH_STATE++;
+  }
+  
+  
+  if (MOUTH_COUNT == 1){
+    pacMan1(width/2,height /2, Wakka_Wakka);
+    clydeGhost(width/2,height /2, Wakka_Wakka );
+    inkyGhost(width/2,height /2, Wakka_Wakka );
+  logoPacMan(width/2,height /2);
+  } else if (MOUTH_COUNT == 2){
+     pacMan2(width/2,height /2, Wakka_Wakka);
+     clydeGhost(width/2,height /2, Wakka_Wakka );
+     inkyGhost(width/2,height /2, Wakka_Wakka );
+  logoPacMan(width/2,height /2);
+  } else if (MOUTH_COUNT == 3){
+    pacMan3(width/2,height /2, Wakka_Wakka);
+    clydeGhost(width/2,height /2, Wakka_Wakka );
+    inkyGhost(width/2,height /2, Wakka_Wakka );
+  logoPacMan(width/2,height /2);
+  } else if (MOUTH_COUNT == 4){
+    pacMan2(width/2,height /2, Wakka_Wakka);
+    clydeGhost(width/2,height /2, Wakka_Wakka );
+    inkyGhost(width/2,height /2, Wakka_Wakka );
+  logoPacMan(width/2,height /2);
+    MOUTH_COUNT = 1;
+  } 
+  
+  if (Wakka_Wakka > 1175){
+    Wakka_Wakka = 0;
+  }
 }
 
-void pacMan(int x, int y,int pacMan_Pos) {
+
+// regular pacman arc(-500 +pacMan_Pos, 0, 200, 200, 0.5, 5.5, PIE);
+// open mouth pacman arc(-500 +pacMan_Pos, 0, 200, 200, 0.5, 4.5, PIE);
+// closed mouth pacman ellipse(-500 + pacMan_Pos, 0, 200, 200);
+void pacMan2(int x, int y,int pacMan_Pos) {
   pushMatrix();
   translate(x,y);
   clear();
   fill(#F7C305);
   rotate(radians(0));
-  arc(-500 +pacMan_Pos, 0, 200, 200, 0.5, 5.5, PIE);
+  arc(-500 +pacMan_Pos, 380, 200, 200, 0.5, 5.5, PIE);
   
+  popMatrix();
+}
+
+void pacMan1(int x, int y,int pacMan_Pos) {
+  pushMatrix();
+  translate(x,y);
+  clear();
+  fill(#F7C305);
+  rotate(radians(0));
+  arc(-500 +pacMan_Pos, 380, 200, 200, 0.5, 4.5, PIE);
+  
+  popMatrix();
+}
+
+void pacMan3(int x, int y,int pacMan_Pos) {
+  pushMatrix();
+  translate(x,y);
+  clear();
+  fill(#F7C305);
+  rotate(radians(0));
+  ellipse(-500 + pacMan_Pos, 380, 200, 200);
   
   popMatrix();
 }
@@ -40,18 +101,39 @@ void clydeGhost(int x, int y, int clyde_pos){
   translate(x,y);
   rotate(radians(180));
   fill(#F78F05);
-  arc(-500 +clyde_pos, 0, 200, 200, 0, PI, CHORD);
-  rect(-400 + clyde_pos,-50, -200, 55);
-  triangle(-400 + clyde_pos, 0, -525 + clyde_pos, -99, -600 + clyde_pos,0);
-  triangle(-400 + clyde_pos,0, -400 + clyde_pos, -99, -570 + clyde_pos,0);
-  triangle(-400 + clyde_pos,0, -480 + clyde_pos, -99, -600 + clyde_pos,0);
-  triangle(-410 + clyde_pos, 0, -600 + clyde_pos, -99, -600 + clyde_pos,0);
+  arc(-500 +clyde_pos, -150, 200, 200, 0, PI, CHORD);
+  rect(-400 + clyde_pos,-200, -200, 55);
+  triangle(-400 + clyde_pos, -150, -525 + clyde_pos, -249, -600 + clyde_pos,-150);
+  triangle(-400 + clyde_pos,-150, -400 + clyde_pos, -249, -570 + clyde_pos,-150);
+  triangle(-400 + clyde_pos,-150, -480 + clyde_pos, -249, -600 + clyde_pos,-150);
+  triangle(-410 + clyde_pos, -150, -600 + clyde_pos,-249, -600 + clyde_pos,-150);
   fill(#E8E5E5);
-  ellipse(-450 + clyde_pos, 40, 55, 70);
-  ellipse(-520 + clyde_pos, 40, 55, 70);
+  ellipse(-450 + clyde_pos, -120, 55, 70);
+  ellipse(-520 + clyde_pos, -120, 55, 70);
   fill(#3E7ECE);
-  ellipse(-440 + clyde_pos, 40, 30, 45);
-  ellipse(-510 + clyde_pos, 40, 30, 45);
+  ellipse(-440 + clyde_pos, -120, 30, 45);
+  ellipse(-510 + clyde_pos, -120, 30, 45);
+  popMatrix();
+}
+
+void inkyGhost(int x, int y, int inky_pos){
+  pushMatrix();
+  noStroke();
+  translate(x,y);
+  rotate(radians(180));
+  fill(#F09494);
+  arc(-500 + inky_pos, 100, 200, 200, 0, PI, CHORD);
+  rect(-400 + inky_pos,55, -200, 55);
+  triangle(-400 + inky_pos, 75, -525 + inky_pos, 0, -600 + inky_pos,75);
+  triangle(-400 + inky_pos,75, -400 + inky_pos, 0, -570 + inky_pos,75);
+  triangle(-400 + inky_pos,75, -480 + inky_pos, 0, -600 + inky_pos,75);
+  triangle(-410 + inky_pos,75, -600 + inky_pos,0, -600 + inky_pos,75);
+  fill(#E8E5E5);
+  ellipse(-450 + inky_pos, 120, 55, 70);
+  ellipse(-520 + inky_pos, 120, 55, 70);
+  fill(#3E7ECE);
+  ellipse(-440 + inky_pos, 120, 30, 45);
+  ellipse(-510 + inky_pos, 120, 30, 45);
   popMatrix();
 }
 
