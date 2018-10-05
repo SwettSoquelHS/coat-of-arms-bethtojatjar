@@ -13,6 +13,7 @@ void setup() {
 }
 
 void draw() {
+  background(0);
   smooth();
   
   Wakka_Wakka = Wakka_Wakka + DIRECTION;
@@ -65,7 +66,7 @@ void draw() {
 void pacMan2(int x, int y,int pacMan_Pos) {
   pushMatrix();
   translate(x,y);
-  clear();
+  
   fill(#F7C305);
   rotate(radians(0));
   arc(-500 +pacMan_Pos, 380, 200, 200, 0.5, 5.5);//, PIE);
@@ -76,7 +77,7 @@ void pacMan2(int x, int y,int pacMan_Pos) {
 void pacMan1(int x, int y,int pacMan_Pos) {
   pushMatrix();
   translate(x,y);
-  clear();
+  
   fill(#F7C305);
   rotate(radians(0));
   arc(-500 +pacMan_Pos, 380, 200, 200, 0.5, 4.5);//, PIE);
@@ -87,7 +88,7 @@ void pacMan1(int x, int y,int pacMan_Pos) {
 void pacMan3(int x, int y,int pacMan_Pos) {
   pushMatrix();
   translate(x,y);
-  clear();
+  
   fill(#F7C305);
   rotate(radians(0));
   ellipse(-500 + pacMan_Pos, 380, 200, 200);
