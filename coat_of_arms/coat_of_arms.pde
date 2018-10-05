@@ -59,8 +59,8 @@ void draw() {
 }
 
 
-// regular pacman arc(-500 +pacMan_Pos, 0, 200, 200, 0.5, 5.5, PIE);
-// open mouth pacman arc(-500 +pacMan_Pos, 0, 200, 200, 0.5, 4.5, PIE);
+// regular pacman arc(-500 +pacMan_Pos, 0, 200, 200, 0.5, 5.5);//, PIE);
+// open mouth pacman arc(-500 +pacMan_Pos, 0, 200, 200, 0.5, 4.5);//, PIE);
 // closed mouth pacman ellipse(-500 + pacMan_Pos, 0, 200, 200);
 void pacMan2(int x, int y,int pacMan_Pos) {
   pushMatrix();
@@ -79,7 +79,7 @@ void pacMan1(int x, int y,int pacMan_Pos) {
   clear();
   fill(#F7C305);
   rotate(radians(0));
-  arc(-500 +pacMan_Pos, 380, 200, 200, 0.5, 4.5, PIE);
+  arc(-500 +pacMan_Pos, 380, 200, 200, 0.5, 4.5);//, PIE);
   
   popMatrix();
 }
@@ -189,7 +189,7 @@ void logoPacMan(int x, int y){
   rect(-400, -400, 50, 120);
   arc(-355,-350, 100, 100, 4.75, 7.80, OPEN);
   triangle(-250,-400, -295, -280, -195, -280);
-  arc(-120, -335, 120, 120, 0.5, 5.5, PIE);
+  arc(-120, -335, 120, 120, 0.5, 5.5);//, PIE);
   rect(-40, -350, 70, 35);
   triangle(235,-395, 185, -280, 290, -280);
   
@@ -218,7 +218,7 @@ void logoPacMan(int x, int y){
   rect( -409, -409, 50, 120);
   arc(-364 ,-359, 100, 100, 4.76, 7.80, OPEN);
   triangle(-260,-400, -310, -285, -205, -285);
-  arc(-130, -345, 120, 120, 0.5, 5.5, PIE);
+  arc(-130, -345, 120, 120, 0.5, 5.5);//, PIE);
   rect(-50, -360, 70, 35);
   triangle(225,-400, 175, -285, 275, -285);
   
