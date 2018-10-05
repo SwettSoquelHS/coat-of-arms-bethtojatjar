@@ -68,7 +68,7 @@ void pacMan2(int x, int y,int pacMan_Pos) {
   clear();
   fill(#F7C305);
   rotate(radians(0));
-  arc(-500 +pacMan_Pos, 380, 200, 200, 0.5, 5.5, PIE);
+  arc(-500 +pacMan_Pos, 380, 200, 200, 0.5, 5.5);//, PIE);
   
   popMatrix();
 }
@@ -160,7 +160,7 @@ void logoPacMan(int x, int y){
   rect( -415, -415, 50, 120);
   arc(-370,-365, 100, 100, 4.75, 7.80, OPEN);
   triangle(-270,-410, -320, -295, -215, -295);
-  arc(-145, -350, 120, 120, 0.5, 5.5, PIE);
+  arc(-145, -350, 120, 120, 0.5, 5.5);//, PIE);
   rect(-60, -370, 70, 35);
   triangle(210,-400, 160, -290, 265, -290);
   endShape();
