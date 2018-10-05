@@ -101,7 +101,7 @@ void clydeGhost(int x, int y, int clyde_pos){
   translate(x,y);
   rotate(radians(180));
   fill(#F78F05);
-  arc(-500 +clyde_pos, -150, 200, 200, 0, PI, CHORD);
+  arc(-500 +clyde_pos, -150, 200, 200, 0, PI);//, CHORD);
   rect(-400 + clyde_pos,-200, -200, 55);
   triangle(-400 + clyde_pos, -150, -525 + clyde_pos, -249, -600 + clyde_pos,-150);
   triangle(-400 + clyde_pos,-150, -400 + clyde_pos, -249, -570 + clyde_pos,-150);
@@ -122,7 +122,7 @@ void inkyGhost(int x, int y, int inky_pos){
   translate(x,y);
   rotate(radians(180));
   fill(#F09494);
-  arc(-500 + inky_pos, 100, 200, 200, 0, PI, CHORD);
+  arc(-500 + inky_pos, 100, 200, 200, 0, PI);//, CHORD);
   rect(-400 + inky_pos,55, -200, 55);
   triangle(-400 + inky_pos, 75, -525 + inky_pos, 0, -600 + inky_pos,75);
   triangle(-400 + inky_pos,75, -400 + inky_pos, 0, -570 + inky_pos,75);
